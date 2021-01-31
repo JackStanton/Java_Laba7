@@ -5,6 +5,8 @@ import com.dstu.laba7.ux.panels.FigurePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MainWindow extends JFrame {
 
@@ -26,5 +28,15 @@ public class MainWindow extends JFrame {
         add(panel);
         add(grid, BorderLayout.SOUTH);
         setVisible(true);
+        addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if(KeyEvent.getKeyText(e.getKeyCode()).equals("Right")||KeyEvent.getKeyText(e.getKeyCode()).equals("Up")){
+                    FigurePanel.managedRectangle.manageSizeUp();
+                }
+                if(KeyEvent.getKeyText(e.getKeyCode()).equals("Left")||KeyEvent.getKeyText(e.getKeyCode()).equals("Down")){
+                    FigurePanel.managedRectangle.manageSizeDown();
+                }
+            }
+        });
     }
 }

@@ -21,4 +21,8 @@ public interface Figure {
     int getFlag();
 
     Shape getShape();
+
+    public void manageSizeUp();
+
+    public void manageSizeDown();
 }

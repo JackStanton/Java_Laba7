@@ -26,13 +26,15 @@ public class FigureRunnable implements Runnable{
         {
             for (int i = 0; true; ) {
                 if(figure.getClass().equals(FigurePanel.rectangle.getClass())){
-                    if ((figure.getShape().getBounds().x > FigurePanel.round.getShape().getBounds().x-3)||(figure.getShape().getBounds().x > FigurePanel.round.getShape().getBounds().x+3)){
+                    if ((figure.getShape().getBounds().x > FigurePanel.round.getShape().getBounds().x-3)||(figure.getShape().getBounds().x > FigurePanel.round.getShape().getBounds().x+3)||
+                            (figure.getShape().getBounds().x < FigurePanel.managedRectangle.getShape().getBounds().x-90)||(figure.getShape().getBounds().x < FigurePanel.managedRectangle.getShape().getBounds().x+90)){
                         flag=(figure.getFlag() == 1)?0:1;
                         figure.setFlag(flag);
                         figure.reColor();
                     }
                 }else{
-                    if ((figure.getShape().getBounds().x < FigurePanel.rectangle.getShape().getBounds().x-3)||(figure.getShape().getBounds().x < FigurePanel.rectangle.getShape().getBounds().x+3)){
+                    if ((figure.getShape().getBounds().x < FigurePanel.rectangle.getShape().getBounds().x-3)||(figure.getShape().getBounds().x < FigurePanel.rectangle.getShape().getBounds().x+3)||
+                            (figure.getShape().getBounds().x < FigurePanel.managedRectangle.getShape().getBounds().x-3)||(figure.getShape().getBounds().x < FigurePanel.managedRectangle.getShape().getBounds().x+3)){
                         flag=(figure.getFlag() == 1)?0:1;
                         figure.setFlag(flag);
                         figure.reColor();
