@@ -12,26 +12,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FigurePanel extends JPanel implements ActionListener {
-
     private final DisplayWorker displayWorker = new DisplayWorker();
     private final int WINDOW_CENTER_POS_X = displayWorker.getWindowCenter().get("POS_X");
     private final int WINDOW_CENTER_POS_Y = displayWorker.getWindowCenter().get("POS_Y");
 
     private final int x = 400;
     private final int y = 400;
-    private final Figure rectangle;
-    private final Figure round;
-
-
-    private static int flag = 0;
+    public static Figure rectangle;
+    public static Figure round;
 
     public FigurePanel() {
         Timer timer = new Timer(25, this);
         timer.start();
         rectangle = new CustomRectangle(x,y);
-        round = new CustomRound(x);
+        round = new CustomRound(300);
         Runnable rectangleRun = new FigureRunnable(rectangle,this,1);
-        Runnable roundRun = new FigureRunnable(round,this,2);
+        Runnable roundRun = new FigureRunnable(round, this,2);
         Thread rectangleThread = new Thread(rectangleRun);
         Thread roundThread = new Thread(roundRun);
         rectangleThread.start();

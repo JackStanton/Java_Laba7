@@ -5,8 +5,8 @@ import java.awt.*;
 
 public abstract class FigureAbstract implements Figure{
 
-    protected double sizeX;
-    protected double sizeY;
+    protected int sizeX;
+    protected int sizeY;
 
     private int flag = 0;
 
@@ -17,22 +17,44 @@ public abstract class FigureAbstract implements Figure{
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.maxSize = sizeX * 1.38;
-        this.minSize = sizeY * 0.70;
+        this.minSize = sizeY * 0.5;
     }
 
     @Override
     public void reSize(double step) {
+
         if (flag == 0){
-            if(sizeX<maxSize){
-                sizeX += step;
-                sizeY += step;
-            } else flag = 1;
+            sizeUp(step);
+        }else {
+            sizeDown(step);
         }
-        if (flag == 1){
-            if(sizeX>minSize){
-                sizeX -= step;
-                sizeY -= step;
-            } else flag = 0;
+
+    }
+
+    @Override
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    private void sizeUp(double step){
+        if(sizeX<maxSize){
+            sizeX += step;
+            sizeY += step;
+        }else {
+            flag = 1;
+        }
+    }
+
+    private void sizeDown(double step){
+        if(sizeX>minSize){
+            sizeX -= step;
+            sizeY -= step;
+        } else{
+            flag = 0;
         }
     }
 
