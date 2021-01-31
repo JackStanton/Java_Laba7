@@ -4,6 +4,7 @@ import com.dstu.laba7.ux.DisplayWorker;
 import com.dstu.laba7.ux.figures.CustomRectangle;
 import com.dstu.laba7.ux.figures.Figure;
 import com.dstu.laba7.ux.figures.CustomRound;
+import com.dstu.laba7.ux.threads.FigureRunnable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,8 +19,8 @@ public class FigurePanel extends JPanel implements ActionListener {
 
     private final int x = 400;
     private final int y = 400;
-    private final Figure rectangle = new CustomRectangle(x,y);
-    private final Figure round = new CustomRound(x);
+    private final Figure rectangle;
+    private final Figure round;
 
 
     private static int flag = 0;
@@ -27,7 +28,14 @@ public class FigurePanel extends JPanel implements ActionListener {
     public FigurePanel() {
         Timer timer = new Timer(25, this);
         timer.start();
-
+        rectangle = new CustomRectangle(x,y);
+        round = new CustomRound(x);
+        Runnable rectangleRun = new FigureRunnable(rectangle,this,1);
+        Runnable roundRun = new FigureRunnable(round,this,2);
+        Thread rectangleThread = new Thread(rectangleRun);
+        Thread roundThread = new Thread(roundRun);
+        rectangleThread.start();
+        roundThread.start();
     }
 
     public void paintComponent(Graphics g)
@@ -35,11 +43,7 @@ public class FigurePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
         g2d.rotate(Math.toRadians(45),WINDOW_CENTER_POS_X,WINDOW_CENTER_POS_Y);
-
-        rectangle.reSize(1);
-        round.reSize(2);
         g2d.draw(round.getShape());
-
         g2d.draw(rectangle.getShape());
         g.dispose();
     }
