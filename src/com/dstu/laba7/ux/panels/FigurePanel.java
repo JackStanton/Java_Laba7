@@ -39,7 +39,9 @@ public class FigurePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
         g2d.rotate(Math.toRadians(45),WINDOW_CENTER_POS_X,WINDOW_CENTER_POS_Y);
+        g2d.setPaint(round.getColor());
         g2d.draw(round.getShape());
+        g2d.setPaint(rectangle.getColor());
         g2d.draw(rectangle.getShape());
         g.dispose();
     }

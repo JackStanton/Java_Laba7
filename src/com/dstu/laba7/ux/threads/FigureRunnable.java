@@ -29,11 +29,13 @@ public class FigureRunnable implements Runnable{
                     if ((figure.getShape().getBounds().x > FigurePanel.round.getShape().getBounds().x-3)||(figure.getShape().getBounds().x > FigurePanel.round.getShape().getBounds().x+3)){
                         flag=(figure.getFlag() == 1)?0:1;
                         figure.setFlag(flag);
+                        figure.reColor();
                     }
                 }else{
                     if ((figure.getShape().getBounds().x < FigurePanel.rectangle.getShape().getBounds().x-3)||(figure.getShape().getBounds().x < FigurePanel.rectangle.getShape().getBounds().x+3)){
                         flag=(figure.getFlag() == 1)?0:1;
                         figure.setFlag(flag);
+                        figure.reColor();
                     }
                 }
                 figure.reSize(step);

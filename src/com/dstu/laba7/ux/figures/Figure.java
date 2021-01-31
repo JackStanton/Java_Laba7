@@ -12,6 +12,10 @@ public interface Figure {
 
     void reSize(double step);
 
+    void reColor();
+
+    Color getColor();
+
     void setFlag(int flag);
 
     int getFlag();

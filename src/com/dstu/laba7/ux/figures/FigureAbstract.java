@@ -13,6 +13,8 @@ public abstract class FigureAbstract implements Figure{
     private final double maxSize;
     private final double minSize;
 
+    protected Color color;
+
     public FigureAbstract(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
@@ -47,6 +49,19 @@ public abstract class FigureAbstract implements Figure{
         }else {
             flag = 1;
         }
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
+    }
+
+    @Override
+    public void reColor() {
+        int r = (int) (Math.random() * 254);
+        int g = (int) (Math.random() * 254);
+        int b = (int) (Math.random() * 254);
+        color = new Color(r,g,b);
     }
 
     private void sizeDown(double step){
