@@ -30,7 +30,6 @@ public abstract class FigureAbstract implements Figure{
         }else {
             sizeDown(step);
         }
-
     }
 
     @Override

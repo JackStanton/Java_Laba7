@@ -15,8 +15,8 @@ public class FigurePanel extends JPanel implements ActionListener{
     private final int WINDOW_CENTER_POS_X = displayWorker.getWindowCenter().get("POS_X");
     private final int WINDOW_CENTER_POS_Y = displayWorker.getWindowCenter().get("POS_Y");
 
-    private final int x = 400;
-    private final int y = 400;
+    private final int x = 300;
+    private final int y = 300;
     public static Figure rectangle;
     public static Figure managedRectangle;
     public static Figure round;
@@ -26,7 +26,7 @@ public class FigurePanel extends JPanel implements ActionListener{
         timer.start();
         rectangle = new CustomRectangle(x,y);
         managedRectangle = new CustomRectangle(500,500);
-        round = new CustomRound(300);
+        round = new CustomRound((int)(x*0.75));
         Runnable rectangleRun = new FigureRunnable(rectangle,this,1);
         Runnable roundRun = new FigureRunnable(round, this,2);
         Thread rectangleThread = new Thread(rectangleRun);
@@ -41,6 +41,7 @@ public class FigurePanel extends JPanel implements ActionListener{
         Graphics2D g2d = (Graphics2D)g;
         g2d.setStroke(new BasicStroke(5.0f));
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setPaint(managedRectangle.getColor());
         g2d.draw(managedRectangle.getShape());
         g2d.rotate(Math.toRadians(45),WINDOW_CENTER_POS_X,WINDOW_CENTER_POS_Y);
         g2d.setPaint(round.getColor());

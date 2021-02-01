@@ -22,7 +22,7 @@ public interface Figure {
 
     Shape getShape();
 
-    public void manageSizeUp();
+    void manageSizeUp();
 
-    public void manageSizeDown();
+    void manageSizeDown();
 }
