@@ -30,9 +30,9 @@ public class DisplayWorker {
         return (y - getHeight())/2;
     }
 
-    public int getFontSize() {
-        return fontSize;
-    }
+//    public int getFontSize() {
+//        return fontSize;
+//    }
 
     public HashMap<String, Integer> getWindowCenter(){
         HashMap<String, Integer> map = new HashMap<>();

@@ -1,5 +1,6 @@
 package com.dstu.laba7.ux.threads;
 
+import com.dstu.laba7.ux.figures.CustomRectangle;
 import com.dstu.laba7.ux.figures.Figure;
 import com.dstu.laba7.ux.panels.FigurePanel;
 
@@ -27,8 +28,9 @@ public class FigureRunnable implements Runnable{
             for (int i = 0; true; ) {
                 int aR = FigurePanel.managedRectangle.getShape().getBounds().width;
                 double bR = Math.sqrt((2*aR*aR)/4);
-                if(figure.getClass().equals(FigurePanel.rectangle.getClass())){
-                    if ((figure.getShape().getBounds().width <= FigurePanel.round.getShape().getBounds().width)||(figure.getShape().getBounds().width) >= bR) {
+                if(figure instanceof CustomRectangle){
+                    if ((figure.getShape().getBounds().width <= FigurePanel.round.getShape().getBounds().width)
+                            ||(figure.getShape().getBounds().width) >= bR) {
                         flag=(figure.getFlag() == 1)?0:1;
                         figure.setFlag(flag);
                         figure.reColor();

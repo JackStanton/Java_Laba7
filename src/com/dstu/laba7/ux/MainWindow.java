@@ -34,7 +34,12 @@ public class MainWindow extends JFrame {
                     FigurePanel.managedRectangle.manageSizeUp();
                 }
                 if(KeyEvent.getKeyText(e.getKeyCode()).equals("Left")||KeyEvent.getKeyText(e.getKeyCode()).equals("Down")){
-                    FigurePanel.managedRectangle.manageSizeDown();
+                    int widthRectangle = FigurePanel.rectangle.getShape().getBounds().width;
+                    int widthManaged = FigurePanel.managedRectangle.getShape().getBounds().width;
+                    double sideOfRectangle = Math.sqrt((2*widthManaged*widthManaged)/4);
+                    if(widthRectangle<sideOfRectangle-5){
+                        FigurePanel.managedRectangle.manageSizeDown();
+                    }
                 }
             }
         });
